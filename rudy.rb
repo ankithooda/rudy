@@ -50,6 +50,10 @@ def fetch_subreddit_latest_post subreddit, post_type
 end
 
 def main
+
+  # Send a message when startings
+  `notify-send -t 3 Rudy has started`
+  
   #TODO: Get this hash from a config file
   subreddit_list = [
     {'name' => 'programming',
@@ -63,9 +67,6 @@ def main
 
   subreddit_list.each do |subreddit|
     fetch_subreddit_latest_post subreddit, HOT
-
-    # Sleep for half minute before fetching next
-    sleep NOTIFY_TIME + 30
   end
 end
 
