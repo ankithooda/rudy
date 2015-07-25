@@ -1,7 +1,7 @@
 require 'json'
 require 'net/http'
 
-TODO: Get this constants from a config file
+#TODO: Get this constants from a config file
 REDDIT_URL = 'http://www.reddit.com'
 HOT = 'hot'
 NEW = 'new'
@@ -50,7 +50,7 @@ def fetch_subreddit_latest_post subreddit, post_type
 end
 
 def main
-  TODO: Get this hash from a config file
+  #TODO: Get this hash from a config file
   subreddit_list = [
     {'name' => 'programming',
       'msg' => 'Hot on /programming'
