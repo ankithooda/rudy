@@ -18,11 +18,11 @@ def fetch_subreddit_latest_post subreddit, post_type
     json["data"]["children"].each do |post|
       post.push post["data"]["title"]
     end
+    `notify-send -t #{NOTIFY_TIME} #{subreddit['msg']} '#{post_list.join("\n")}'`
   rescue StandardException => e
     puts "#{e}"
     puts "#{e.backtrace.join("\n")}"
   end
-  `notify-send -t #{NOTIFY_TIME} #{subreddit['msg']} '#{post_list.join("\n")}'`
 end
 
 def main
