@@ -11,6 +11,7 @@ NOTIFY_TIME = 10
 # subreddit['msg']
 def fetch_subreddit_latest_post subreddit, post_type
   begin
+    puts "#{Time.now} : Fetching reddit posts for #{subreddit['name']}"
     post_list = []
     subreddit_url = "#{REDDIT_URL}/r/#{subreddit['name']}/#{post_type}.json?sort=new"
     result = Net::HTTP.get(URI.parse(subreddit_url))
@@ -18,6 +19,7 @@ def fetch_subreddit_latest_post subreddit, post_type
     json["data"]["children"].each do |post|
       post.push post["data"]["title"]
     end
+    puts "#{Time.now} : Fetched #{post_list.length} posts"
     `notify-send -t #{NOTIFY_TIME} #{subreddit['msg']} '#{post_list.join("\n")}'`
   rescue StandardException => e
     puts "#{e}"
